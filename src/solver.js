@@ -1,15 +1,8 @@
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default class Solver {
-    constructor(boardJSON) {
-        //let parsed = JSON.parse(boardJSON);
-        //this.board = parsed.board;
-        console.log("Solver object created");
-        console.log(boardJSON);
-
-        this.board = boardJSON;
-        this.original = boardJSON;
-        console.log(this.board);
+    constructor(board) {
+        this.board = board;
     }
     solve() {
         let nextEmpty = this.findEmpty();
@@ -22,7 +15,6 @@ export default class Solver {
         for (var i = 0; i < nums.length; i++) {
             if (this.valid(nums[i], row, col)) {
                 this.board[row][col] = nums[i];
-                //console.log(this.board);
                 if (this.solve()) {
                     return true;
                 }
@@ -83,8 +75,5 @@ export default class Solver {
             }
         }
         return true;
-    }
-    publicSolve() {
-        this.solve();
     }
 }
